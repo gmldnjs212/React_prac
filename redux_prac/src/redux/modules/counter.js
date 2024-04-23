@@ -1,3 +1,20 @@
+// 액션 value를 상수들로 만들어준다.
+const PLUS_ONE = "PLUS_ONE";
+const MINUS_ONE = "MINUS_ONE";
+
+// Action Creator를 만들어준다.
+export const plusOne = () => {
+  return {
+    type: PLUS_ONE,
+  };
+};
+
+export const minusOne = () => {
+  return {
+    type: MINUS_ONE,
+  };
+};
+
 // 초기 상태값
 const initialState = {
   number: 0,
@@ -6,15 +23,14 @@ const initialState = {
 // 리듀서
 const counter = (state = initialState, action) => {
   switch (action.type) {
-    // 받은 액션객체의 type이 PLUS_ONE인 경우를 추가함
-    case "PLUS_ONE":
+    // 문자열이 아닌 상수를 넣어준다.
+    case PLUS_ONE:
       return {
-        // 기존 state에 있던 number에 +1을 수행
         number: state.number + 1,
       };
-    case "MINUS_ONE":
+    // 문자열이 아닌 상수를 넣어준다.
+    case MINUS_ONE:
       return {
-        // 기존 state에 있던 number에 -1을 수행
         number: state.number - 1,
       };
     default:

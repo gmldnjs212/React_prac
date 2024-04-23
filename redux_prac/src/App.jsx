@@ -2,11 +2,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 
-const App = () => {
-  // 액션객체를 보내는 역할을 수행하는 dispatch객체 생성
-  const dispatch = useDispatch();
+// 사용할 Action Creator를 import한다.
+import { minusOne, plusOne } from "./redux/modules/counter";
 
-  // 코드 추가
+const App = () => {
+  const dispatch = useDispatch();
   const number = useSelector((state) => state.counter.number);
 
   return (
@@ -15,7 +15,8 @@ const App = () => {
       <button
         onClick={() => {
           // dispatch를 사용하여 액션객체를 보냄
-          dispatch({ type: "PLUS_ONE" });
+          // dispatch({ type: "PLUS_ONE" });
+          dispatch(plusOne()); // 액션객체를 Action Creator로 변경
         }}
       >
         + 1
@@ -23,7 +24,8 @@ const App = () => {
       <button
         onClick={() => {
           // dispatch를 사용하여 액션객체를 보냄
-          dispatch({ type: "MINUS_ONE" });
+          // dispatch({ type: "MINUS_ONE" });
+          dispatch(minusOne()); // 액션객체를 Action Creator로 변경
         }}
       >
         - 1
